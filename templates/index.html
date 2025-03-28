@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pokémon Name Prediction App</title>
+    <style>
+        body {
+            background-color: #f0f8ff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+            padding: 40px;
+        }
+        h1 {
+            color: #e60012;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        .upload-section {
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            padding: 25px;
+            margin-top: 30px;
+            display: inline-block;
+        }
+        input[type="file"] {
+            margin-top: 15px;
+        }
+        input[type="submit"] {
+            background-color: #ffcb05;
+            border: none;
+            padding: 10px 20px;
+            font-weight: bold;
+            color: #3b4cca;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 1.3em;
+            color: #1e4d2b;
+        }
+        .image-preview {
+            margin-top: 15px;
+            max-height: 300px;
+        }
+    </style>
+</head>
+<body>
+    <h1>🔍 Who's that Pokémon?</h1>
+
+    <div class="upload-section">
+        <form method="POST" enctype="multipart/form-data">
+            <p><strong>Upload a Pokémon image to predict its name:</strong></p>
+            <input type="file" name="file" accept="image/*" required>
+            <br><br>
+            <input type="submit" value="Predict">
+        </form>
+
+        {% if prediction %}
+            <div class="result">
+                <p><strong>🧠 Predicted Name:</strong> {{ prediction }}</p>
+                <img src="/static/uploaded_image.png" class="image-preview" alt="Uploaded Pokémon">
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
